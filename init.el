@@ -41,7 +41,6 @@ values."
      auto-completion
      ;; better-defaults
      emacs-lisp
-     osx
      git
      ;; markdown
      ;; org
@@ -74,7 +73,9 @@ values."
    ;; `used-but-keep-unused' installs only the used packages but won't uninstall
    ;; them if they become unused. `all' installs *all* packages supported by
    ;; Spacemacs and never uninstall them. (default is `used-only')
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-install-packages 'used-only)
+  (if (string-equal system-type "darwin") (add-to-list 'dotspacemacs-configuration-layers 'osx ))
+  )
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -140,7 +141,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro for Powerline"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 13
                                :weight normal
                                :width normal
